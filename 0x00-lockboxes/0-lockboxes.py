@@ -36,5 +36,4 @@ def checkBoxes(boxes, new, index):
             return True
         # print(i, boxes[index], boxes[index][i])
         checkBoxes(boxes, new, boxes[index][i])
-
     return False
