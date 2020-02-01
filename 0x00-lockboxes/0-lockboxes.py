@@ -26,10 +26,15 @@ def checkBoxes(boxes, new, index):
                        index(int): index to a box to check through 'keys'
     """
     if new[index] is True:
+        # print("nope! go back...")
         return False
     new[index] = True
+    # print(new)
     for i in range(len(boxes[index])):
+        if False not in new:
+            # print("done!")
+            return True
+        # print(i, boxes[index], boxes[index][i])
         checkBoxes(boxes, new, boxes[index][i])
-    if False not in new:
-        return True
+
     return False
