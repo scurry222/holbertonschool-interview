@@ -5,6 +5,7 @@
     Write a method that determines if all the boxes can be opened.
 """
 
+
 def canUnlockAll(boxes):
     """ canUnlockAll - return true if all boxes can be opened, false if not
         attrs:
@@ -12,10 +13,11 @@ def canUnlockAll(boxes):
                                    boxes
     """
     new = [False for i in range(len(boxes))]
-    return checkBoxes(boxes, new, 0) == True
+    return checkBoxes(boxes, new, 0) is True
+
 
 def checkBoxes(boxes, new, index):
-    """ checkBoxes - recursively check path of key 
+    """ checkBoxes - recursively check path of key
         attrs:
             boxes (List of lists): boxes with list indicies that 'open' other
                                    boxes
@@ -23,7 +25,7 @@ def checkBoxes(boxes, new, index):
                                     specific index
                        index(int): index to a box to check through 'keys'
     """
-    if new[index] == True:
+    if new[index] is True:
         return False
     new[index] = True
     for i in range(len(boxes[index])):
