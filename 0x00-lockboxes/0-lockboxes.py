@@ -23,7 +23,7 @@ def canUnlockAll(boxes):
     return checkBoxes(boxes, new, 0) is True
 
 
-def checkBoxes(boxes, new, index):
+def checkBoxes(boxes, new, index, debug=False):
     """ checkBoxes - Recursively check the path of keys unlocking boxes.
         attrs:
             boxes (List of lists): Boxes with list indicies that 'open' other
@@ -32,22 +32,15 @@ def checkBoxes(boxes, new, index):
                                    specific index.
                        index(int): Index to a box to check through keys.
     """
-    # print("calling...")
-    # print(new)
+    debug and print("calling...")
+    debug and print(new)
     if new[index] is True:
-        # print("nope! go back...")
+        debug and print("nope! go back...", boxes[index])
         return False
     new[index] = True
-    if False not in new:
-        # print("done!")
-        return True
     for i in range(len(boxes[index])):
-        if False not in new:
-            # print("done!")
-            return True
-        # print(i, boxes[index], boxes[index][i])
+        debug and print(i, boxes[index], boxes[index][i])
         checkBoxes(boxes, new, boxes[index][i])
     if False not in new:
-        # print("done!")
+        debug and print("done!", new, index)
         return True
-    return False
