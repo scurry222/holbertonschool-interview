@@ -19,36 +19,6 @@ def canUnlockAll(boxes):
             boxes (List of lists): Boxes with list indicies that 'open' other
                                    boxes.
     """
-    # new = [False for i in range(len(boxes))]
-    # try:
-    #     return checkBoxes(boxes, new, 0) is True
-    # except:
-    #     return False
-
-def checkBoxes(boxes, new, index, debug=True):
-    """ checkBoxes - Recursively check the path of keys unlocking boxes.
-        attrs:
-            boxes (List of lists): Boxes with list indicies that 'open' other
-                                   boxes.
-                       new (list): List of booleans to 'mark' each box at a
-                                   specific index.
-                       index(int): Index to a box to check through keys.
-    """
-    # debug and print("calling...")
-    # debug and print(new)
-    # if new[index] is True:
-    #     debug and print("nope! go back...", boxes[index])
-    #     return False
-    # new[index] = True
-    # for i in range(len(boxes[index])):
-    #     debug and print(i, boxes[index], boxes[index][i])
-    #     checkBoxes(boxes, new, boxes[index][i])
-    # if False not in new:
-    #     debug and print("done!", new, index)
-    #     return True
-    # return False
-
-def canUnlockAll(boxes):
     if not boxes or not isinstance(boxes, list):
         return False
     if not len(boxes):
@@ -68,3 +38,37 @@ def canUnlockAll(boxes):
                 pass
     return all(verify)
 
+# def canUnlockAll(boxes):
+#     """ canUnlockAll - Return true if all boxes can be opened, false if not.
+#         attrs:
+#             boxes (List of lists): Boxes with list indicies that 'open' other
+#                                    boxes.
+#     """
+#     new = [False for i in range(len(boxes))]
+#     try:
+#         return checkBoxes(boxes, new, 0) is True
+#     except:
+#         return False
+
+# def checkBoxes(boxes, new, index, debug=True):
+#     """ checkBoxes - Recursively check the path of keys unlocking boxes.
+#         attrs:
+#             boxes (List of lists): Boxes with list indicies that 'open' other
+#                                    boxes.
+#                        new (list): List of booleans to 'mark' each box at a
+#                                    specific index.
+#                        index(int): Index to a box to check through keys.
+#     """
+#     debug and print("calling...")
+#     debug and print(new)
+#     if new[index] is True:
+#         debug and print("nope! go back...", boxes[index])
+#         return False
+#     new[index] = True
+#     for i in range(len(boxes[index])):
+#         debug and print(i, boxes[index], boxes[index][i])
+#         checkBoxes(boxes, new, boxes[index][i])
+#     if False not in new:
+#         debug and print("done!", new, index)
+#         return True
+#     return False
