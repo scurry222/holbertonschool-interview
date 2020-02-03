@@ -51,16 +51,16 @@ def checkBoxes(boxes, new, index, debug=True):
 def canUnlockAll(boxes):
     if not boxes or not isinstance(boxes, list):
         return False
+    if not len(boxes):
+        return True
     stack = [0]
     verify = [False] * len(boxes)
     verify[0] = True
     while(stack):
         node = stack.pop()
         for el in boxes[node]:
-            if not verify[el] or not isinstance(el, int):
+            if isinstance(el, int) and el >= 0 and el < len(boxes):
                 verify[el] = True
                 stack.append(el)
-    if False not in verify:
-        return True
-    return False
+    return all(verify)
 
