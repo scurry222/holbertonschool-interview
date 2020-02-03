@@ -19,11 +19,13 @@ def canUnlockAll(boxes):
             boxes (List of lists): Boxes with list indicies that 'open' other
                                    boxes.
     """
-    new = [False for i in range(len(boxes))]
-    return checkBoxes(boxes, new, 0) is True
+    # new = [False for i in range(len(boxes))]
+    # try:
+    #     return checkBoxes(boxes, new, 0) is True
+    # except:
+    #     return False
 
-
-def checkBoxes(boxes, new, index, debug=False):
+def checkBoxes(boxes, new, index, debug=True):
     """ checkBoxes - Recursively check the path of keys unlocking boxes.
         attrs:
             boxes (List of lists): Boxes with list indicies that 'open' other
@@ -32,15 +34,33 @@ def checkBoxes(boxes, new, index, debug=False):
                                    specific index.
                        index(int): Index to a box to check through keys.
     """
-    debug and print("calling...")
-    debug and print(new)
-    if new[index] is True:
-        debug and print("nope! go back...", boxes[index])
+    # debug and print("calling...")
+    # debug and print(new)
+    # if new[index] is True:
+    #     debug and print("nope! go back...", boxes[index])
+    #     return False
+    # new[index] = True
+    # for i in range(len(boxes[index])):
+    #     debug and print(i, boxes[index], boxes[index][i])
+    #     checkBoxes(boxes, new, boxes[index][i])
+    # if False not in new:
+    #     debug and print("done!", new, index)
+    #     return True
+    # return False
+
+def canUnlockAll(boxes):
+    if not boxes or not isinstance(boxes, list):
         return False
-    new[index] = True
-    for i in range(len(boxes[index])):
-        debug and print(i, boxes[index], boxes[index][i])
-        checkBoxes(boxes, new, boxes[index][i])
-    if False not in new:
-        debug and print("done!", new, index)
+    stack = [0]
+    verify = [False] * len(boxes)
+    verify[0] = True
+    while(stack):
+        node = stack.pop()
+        for el in boxes[node]:
+            if not verify[el] or not isinstance(el, int):
+                verify[el] = True
+                stack.append(el)
+    if False not in verify:
         return True
+    return False
+
