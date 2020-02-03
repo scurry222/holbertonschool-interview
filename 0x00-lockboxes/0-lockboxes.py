@@ -56,11 +56,15 @@ def canUnlockAll(boxes):
     stack = [0]
     verify = [False] * len(boxes)
     verify[0] = True
-    while(stack):
+    while stack:
         node = stack.pop()
         for el in boxes[node]:
-            if isinstance(el, int) and el >= 0 and el < len(boxes):
-                verify[el] = True
-                stack.append(el)
+            try:
+                if isinstance(el, int) and el >= 0 and el < len(boxes)\
+                 and not verify[el]:
+                    verify[el] = True
+                    stack.append(el)
+            except Exception:
+                pass
     return all(verify)
 
