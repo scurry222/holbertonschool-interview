@@ -15,7 +15,7 @@
 
 ## 1. Function that inserts a value into a Max Binary Heap
 
-- Prototype: **heap_t *heap_insert(heap_t **root, *int *value)*
+- Prototype: *heap_t *heap_insert(heap_t **root, *int *value)*
 
 - root is a double pointer to the root node of the Heap
 
