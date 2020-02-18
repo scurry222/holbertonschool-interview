@@ -2,7 +2,7 @@
 
 ## 0. Function that creates a binary tree node
 
-- Prototype: **binary_tree_t *binary_tree_node(binary_tree_t *parent, int value)**
+- Prototype: *binary_tree_t *binary_tree_node(binary_tree_t *parent, int value)*
 
 - parent is a pointer to the parent node of the node to create
 
@@ -15,7 +15,7 @@
 
 ## 1. Function that inserts a value into a Max Binary Heap
 
-- Prototype: **heap_t *heap_insert(heap_t **root, int value)**
+- Prototype: **heap_t *heap_insert(heap_t **root, *int *value)*
 
 - root is a double pointer to the root node of the Heap
 
