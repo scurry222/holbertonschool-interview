@@ -18,7 +18,7 @@ def minOperations(n):
         return 0
     if n == 2:
         return 2
-    return len(dfs(2, 1, n, ['c', 'p']))
+    return dfs(2, 1, n, 2)
 
 
 def dfs(curr, prev, n, ops):
@@ -28,7 +28,7 @@ def dfs(curr, prev, n, ops):
             prev(int): previous value of characters in the file, used to
                        perform operations
                n(int): target value to satisfy
-            ops(list): list of operations enacted to achieve target value
+            ops(int): number of operations enacted to achieve target value
     """
     if curr == n:
         """ Base case """
@@ -37,5 +37,5 @@ def dfs(curr, prev, n, ops):
         """ Invalid amount of operations """
         return None
     """ Start / continue recursive tree, saving amount of operations done """
-    return dfs(curr * 2, curr, n, ops + ['c', 'p']) or\
-        dfs(curr + prev, prev, n, ops + ['p'])
+    return dfs(curr * 2, curr, n, ops + 2) or\
+        dfs(curr + prev, prev, n, ops + 1)
