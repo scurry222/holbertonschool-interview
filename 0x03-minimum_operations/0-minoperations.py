@@ -3,39 +3,25 @@
     operations in this file: Copy All and Paste.
     Given a number n, write a method that calculates the fewest number of
     operations needed to result in exactly n H characters in the file.
-
     Returns an integer
     If n is impossible to achieve, return 0
 """
+import math
 
 
 def minOperations(n):
-    """ Start the depth-first search after checking for valid input
+    """ Efficient solution by reducing size of n recursively.
         Args:
-            n(int): target value to achieve
+            n(int): integer to count minimum amount of operations.
+                    first n: value to match
+                    last n: amount of minimum operations to reach first n
+                            value.
     """
     if n <= 1:
         return 0
-    if n == 2:
-        return 2
-    return dfs(2, 1, n, 2)
-
-
-def dfs(curr, prev, n, ops):
-    """ Depth-first search to achieve minimum amount of operations to reach 'n'
-        Args:
-            curr(int): current value of characters in the file
-            prev(int): previous value of characters in the file, used to
-                       perform operations
-               n(int): target value to satisfy
-            ops(int): number of operations enacted to achieve target value
-    """
-    if curr == n:
-        """ Base case """
-        return ops
-    if curr > n:
-        """ Invalid amount of operations """
-        return None
-    """ Start / continue recursive tree, saving amount of operations done """
-    return dfs(curr * 2, curr, n, ops + 2) or\
-        dfs(curr + prev, prev, n, ops + 1)
+    for i in range(2, int(math.sqrt(n)) + 1):
+        """ Iterate to root of n. If root doesnt exist, return n. """
+        if n % i == 0:
+            """ A divisor was found! make new n equal to half previous n, add iteration. """
+            return minOperations(int(n / i)) + i
+    return n
