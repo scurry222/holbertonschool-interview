@@ -22,6 +22,8 @@ def minOperations(n):
     for i in range(2, int(math.sqrt(n)) + 1):
         """ Iterate to root of n. If root doesnt exist, return n. """
         if n % i == 0:
-            """ A divisor was found! make new n equal to half previous n, add iteration. """
+            """ A divisor was found! make new n equal to half previous n,
+                add iteration.
+            """
             return minOperations(int(n / i)) + i
     return n
