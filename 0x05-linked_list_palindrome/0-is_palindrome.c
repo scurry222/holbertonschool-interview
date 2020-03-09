@@ -26,17 +26,17 @@ void reverse(listint_t **head)
  */
 int is_palindrome(listint_t **head)
 {
-	listint_t *node = *head, *fast = *head, *slow = *head, *rev = NULL;
+	listint_t *node = *head, *fast = *head, *rev = *head;
 
 	while (fast && fast->next && fast->next->next)
 	{
-		slow = slow->next;
+		rev = rev->next;
 		fast = fast->next->next;
 	}
 
-	reverse(&slow);
+	reverse(&rev);
 
-	while (node && rev)
+	while (rev && node)
 	{
 		if (node->n != rev->n)
 			return (0);
