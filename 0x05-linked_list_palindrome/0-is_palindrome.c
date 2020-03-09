@@ -1,75 +1,47 @@
 #include "lists.h"
 
-
 /**
- * size_of - Find size of the linked list
- * @head: pointer to head of the linked list
- * 
- * Return: size of the LL
+ * reverse - reverse the contents of the rest of the linked list after pointer.
+ * @head: Pointer to start of the LL
  */
-int size_of(listint_t **head)
+void reverse(listint_t **head)
 {
-	int size = 0;
-	listint_t *traverse = *head;
+	listint_t *node = *head, *next, *prev = NULL;
 
-	while (traverse)
+	while (node)
 	{
-		size++;
-		traverse = traverse->next;
+		next = node->next;
+		node->next = prev;
+		prev = node;
+		node = next;
 	}
-	return (size);
-}
-
-/**
- * top - Find index of last element in the stack
- * @stack: array to traverse
- *
- * Return: last element
- */
-int top(int *stack)
-{
-	int i;
-
-	for (i = 0; stack[i]; i++)
-	;
-
-	return (i - 1);
+	*head = prev;
 }
 
 /**
  * is_palindrome - Check if Singly Linked List is a palindrome
  * @head: Pointer to start of the LL
- * 
+ *
  * Return: 1 if LL is a palindrome, 0 if not
  */
 int is_palindrome(listint_t **head)
 {
-	int  *stack, size, last, i = 0;
-	listint_t *node;
+	listint_t *node = *head, *fast = *head, *slow = *head, *rev = NULL;
 
-	if (!head)
-		return (1);
-
-	size = size_of(head);
-	stack = malloc((size / 2) - 1);
-
-	node = *head;
-
-	while (i < size / 2)
+	while (fast && fast->next && fast->next->next)
 	{
-		stack[i] = node->n;
-		node = node->next;
-		i++;
+		slow = slow->next;
+		fast = fast->next->next;
 	}
 
-	last = top(stack);
+	reverse(&slow);
 
-	while (node)
+	while (node && rev)
 	{
-		if (node->n != stack[last])
+		if (node->n != rev->n)
 			return (0);
 		node = node->next;
-		last--;
+		rev = rev->next;
 	}
 	return (1);
 }
