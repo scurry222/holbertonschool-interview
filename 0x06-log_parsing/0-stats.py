@@ -21,17 +21,20 @@ if __name__ == '__main__':
 
                 if status_code in codes:
                     codes[status_code] += 1
-
+            except BaseException:
+                pass
+            try:
                 file_size += int(data[-1])
-            except:
+            except BaseException:
                 pass
 
             count += 1
             if count % 10 == 0:
                 print_codes(codes, file_size)
 
-        print_codes(codes, file_size)
-
     except KeyboardInterrupt:
         print_codes(codes, file_size)
         raise
+
+    print_codes(codes, file_size)
+
