@@ -16,8 +16,9 @@ if __name__ == '__main__':
     try:
         for line in sys.stdin:
             count += 1
+            data = line.split()
+
             try:
-                data = line.split()
                 status_code = int(data[-2])
 
                 if status_code in codes:
@@ -26,8 +27,10 @@ if __name__ == '__main__':
                 file_size += int(data[-1])
             except:
                 pass
+
             if count % 10 == 0:
                 print_codes(codes, file_size)
+
         print_codes(codes, file_size)
     except KeyboardInterrupt:
         print_codes(codes, file_size)
