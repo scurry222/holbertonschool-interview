@@ -15,10 +15,8 @@ if __name__ == '__main__':
                 print("{}: {}".format(k, codes[k]))
     try:
         for line in sys.stdin:
-            count += 1
-            data = line.split()
-
             try:
+                data = line.split()
                 status_code = int(data[-2])
 
                 if status_code in codes:
@@ -28,6 +26,7 @@ if __name__ == '__main__':
             except:
                 pass
 
+            count += 1
             if count % 10 == 0:
                 print_codes(codes, file_size)
 
