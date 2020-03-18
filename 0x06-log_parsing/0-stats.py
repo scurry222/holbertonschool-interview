@@ -37,4 +37,3 @@ if __name__ == '__main__':
         raise
 
     print_codes(codes, file_size)
-    
