@@ -32,6 +32,7 @@ if __name__ == '__main__':
                 print_codes(codes, file_size)
 
         print_codes(codes, file_size)
+
     except KeyboardInterrupt:
         print_codes(codes, file_size)
         raise
