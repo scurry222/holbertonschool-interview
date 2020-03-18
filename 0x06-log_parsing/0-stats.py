@@ -24,10 +24,10 @@ if __name__ == '__main__':
                     codes[status_code] += 1
 
                 file_size += int(data[-1])
-                if count % 10 == 0:
-                    print_codes(codes, file_size)
             except:
                 pass
+            if count % 10 == 0:
+                print_codes(codes, file_size)
         print_codes(codes, file_size)
     except KeyboardInterrupt:
         print_codes(codes, file_size)
