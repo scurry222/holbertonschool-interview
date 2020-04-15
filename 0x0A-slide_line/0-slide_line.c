@@ -80,7 +80,7 @@ int move_zeroes_right(int *line, size_t size)
  */
 int move_zeroes_left(int *line, size_t size)
 {
-	size_t i = 0, zeroes = 0;
+	ssize_t i = 0, zeroes = 0;
 
 	for (i = size - 1; i >= 0; i--)
 	{
