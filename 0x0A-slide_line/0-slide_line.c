@@ -65,19 +65,23 @@ int merge_nums_left(int *line, size_t size)
  */
 int merge_nums_right(int *line, size_t size)
 {
-	size_t i, p = size - 1;
+	ssize_t i, p = size - 1;
 
-	for (i = 1; i < size; i++)
+	for (i = size - 2; i >= 0; i--)
 	{
+		printf("%d ", line[p]);
+		printf("%d\n", line[i]);
 		if (line[i])
 		{
 			if (line[p])
 			{
 				if (line[p] == line[i])
 				{
-					line[p++] *= 2;
+					line[p--] *= 2;
 					line[i] = 0;
 				}
+				else
+					p = i;
 			}
 			else
 				p = i;
