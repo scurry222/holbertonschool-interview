@@ -69,8 +69,6 @@ int merge_nums_right(int *line, size_t size)
 
 	for (i = size - 2; i >= 0; i--)
 	{
-		printf("%d ", line[p]);
-		printf("%d\n", line[i]);
 		if (line[i])
 		{
 			if (line[p])
