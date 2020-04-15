@@ -49,8 +49,7 @@ int merge_nums_left(int *line, size_t size)
 					line[i] = 0;
 				}
 			}
-			else
-				p = i;
+			p = i;
 		}
 	}
 	return (1);
@@ -78,8 +77,6 @@ int merge_nums_right(int *line, size_t size)
 					line[p--] *= 2;
 					line[i] = 0;
 				}
-				else
-					p = i;
 			}
 			p = i;
 		}
