@@ -81,8 +81,7 @@ int merge_nums_right(int *line, size_t size)
 				else
 					p = i;
 			}
-			else
-				p = i;
+			p = i;
 		}
 	}
 	return (1);
