@@ -9,7 +9,8 @@
 #define SLIDE_RIGHT 1
 
 int slide_line(int *line, size_t size, int direction);
-int merge_nums(int *line, size_t size);
+int merge_nums_left(int *line, size_t size);
+int merge_nums_right(int *line, size_t size);
 int move_zeroes_right(int *line, size_t size);
 int move_zeroes_left(int *line, size_t size);
 

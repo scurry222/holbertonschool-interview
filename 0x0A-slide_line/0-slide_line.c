@@ -12,22 +12,60 @@ int slide_line(int *line, size_t size, int direction)
 {
 	if (!line || (direction != SLIDE_LEFT && direction != SLIDE_RIGHT))
 		return (0);
-	merge_nums(line, size);
-	direction == SLIDE_RIGHT ? move_zeroes_left(line, size)
-		: move_zeroes_right(line, size);
+	if(direction == SLIDE_RIGHT)
+	{
+		merge_nums_right(line, size);
+		move_zeroes_left(line, size);
+	}
+	else
+	{
+		merge_nums_left(line, size);
+		move_zeroes_right(line, size);
+	}
+	
 	return (1);
 }
 
 /**
- * merge_nums - merge all adjacent equal non-zero numbers
+ * merge_nums_left - merge all adjacent equal non-zero numbers left
  * @line: integer array to slide
  * @size: size of the array
  *
  * Return: 1
  */
-int merge_nums(int *line, size_t size)
+int merge_nums_left(int *line, size_t size)
 {
 	size_t i, p = 0;
+
+	for (i = 1; i < size; i++)
+	{
+		if (line[i])
+		{
+			if (line[p])
+			{
+				if (line[p] == line[i])
+				{
+					line[p++] *= 2;
+					line[i] = 0;
+				}
+			}
+			else
+				p = i;
+		}
+	}
+	return (1);
+}
+
+/**
+ * merge_nums_right - merge all adjacent equal non-zero numbers right
+ * @line: integer array to slide
+ * @size: size of the array
+ *
+ * Return: 1
+ */
+int merge_nums_right(int *line, size_t size)
+{
+	size_t i, p = size - 1;
 
 	for (i = 1; i < size; i++)
 	{
