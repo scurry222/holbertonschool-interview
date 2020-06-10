@@ -6,6 +6,8 @@
 
 def rain(walls):
     """ Calculate how much water will be retained after it rains """
+    if not walls:
+        return 0
 
     prev_wall = walls[0]
     prev_index = max_retained = temp = 0
